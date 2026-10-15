@@ -1,0 +1,21 @@
+{
+  "experiment": "Stage 0b: Zoom In car circuit (mixed4c car detector spread into mixed4d dog neurons)",
+  "claims": {
+    "zoom_in_2020": "the car feature is stored in superposition across dog neurons and read back out downstream",
+    "goodfire_2026": "those neurons are generalized pose neurons shared by cars and dogs; nothing reads the combination back out"
+  },
+  "selection": {
+    "car_classes": ["ambulance", "beach wagon", "cab", "convertible", "jeep", "limousine", "minivan", "Model T", "racer", "sports car", "pickup", "police van"],
+    "dog_classes": "ImageNet indices 151..268",
+    "C": "mixed4c channel with the highest car share among its top 100 images",
+    "T": "8 mixed4d channels with the largest positive weight from C",
+    "D": "members of T with dog share >= 0.5 among their top 100 images"
+  },
+  "predictions": {
+    "P1_circuit_exists": "C has car share >= 0.5 and |D| >= 3 (descriptive check that this is the Zoom In circuit)",
+    "P2_cars_in_D_examples": "median car share in D's top 100 >= 0.05 (base rate 0.012) supports the essay",
+    "P3_shared_pose": "among D channels with |flip preference on dogs| >= 0.3, same sign on cars in >= 75% AND >= 20 points above other mixed4d channels supports the essay; <= 60% contradicts; if fewer than 3 lateral D channels the test is uninformative",
+    "P4_readout_share": "mean share of positive car attribution into car selective mixed4e channels (car share >= 0.5) that flows through D: < 0.05 supports the essay, >= 0.10 supports superposition readout, between is inconclusive",
+    "P5_combiners": "the 5 mixed4e channels with the largest summed positive weight from D: all with car share < 0.25 supports the essay; any with car share >= 0.5 supports a superposition readout"
+  }
+}

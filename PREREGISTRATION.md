@@ -35,3 +35,38 @@ alternative should be considered alongside "pointed vs round".
 ## Deviations (after seeing data)
 
 _None yet._
+
+---
+
+# Preregistration: Stage 0b, Zoom In's "superposition" car circuit
+
+Written and committed before any mixed4b/4c activation, flip response or attribution was
+computed. Machine readable version: `prereg/zoomin_car.json`. Code: `acc/zoomin.py`.
+
+## Claims under test
+
+* **Zoom In (2020):** a car detector in mixed4c spreads its feature into several dog detecting
+  neurons in mixed4d; the model stores the car there "in superposition" to read it out later.
+* **Goodfire essay (2026):** those neurons are generalized pose neurons (cars and dogs that share a
+  pose); nothing downstream reads the combination back out; feature visualization made them look
+  like pure dog neurons.
+
+## Selection rules (fixed now)
+
+* `C`: the mixed4c channel with the highest share of the 12 car classes among its top 100 images.
+* `T`: the 8 mixed4d channels with the largest positive weight from `C` (exact 1x1 weights, expanded
+  weights for 3x3/5x5 branches).
+* `D`: members of `T` whose top 100 images are at least half dogs.
+
+## Predictions
+
+| ID | What | Supports essay | Supports superposition / contradicts essay |
+|----|------|----------------|---------------------------------------------|
+| P1 | circuit exists (descriptive) | car share of C >= 0.5 and \|D\| >= 3 | n/a |
+| P2 | cars among D's top 100 images | median car share >= 0.05 (base rate 0.012) | near base rate |
+| P3 | shared pose, via a label free mirror test: each channel's preference for the photo vs its mirror image, measured separately on dog and car images | same sign in >= 75% of laterally tuned D channels and >= 20 points above other mixed4d channels | <= 60% |
+| P4 | readout: share of positive car attribution into car selective mixed4e channels flowing through D | < 0.05 | >= 0.10 |
+| P5 | the 5 mixed4e channels that most strongly combine D | all car share < 0.25 | any car share >= 0.5 |
+
+Known limits: the mirror test only sees left/right pose, not frontal vs side; attribution is
+gradient x activation on each target's 50 strongest car images; car and dog classes are fixed lists.
