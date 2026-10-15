@@ -1,0 +1,9 @@
+{
+  "unit": "mixed4e:55",
+  "hypothesis": "4e:55 is a V shape / pointed front detector; round shapes push it negative (Goodfire essay).",
+  "status": "DRAFT, edit and commit before running the analysis cells",
+  "predicted_positive": ["kit fox", "Arctic fox", "borzoi", "Doberman", "warplane", "speedboat", "mountain tent", "obelisk"],
+  "predicted_negative": ["orange", "lemon", "basketball", "soccer ball", "volleyball", "ping-pong ball", "bagel", "plate", "manhole cover", "pizza"],
+  "essay_positive": ["red fox", "tabby", "sports car", "bullet train", "pool table"],
+  "essay_negative": ["snail", "golf ball", "tennis ball", "analog clock", "wall clock"]
+}

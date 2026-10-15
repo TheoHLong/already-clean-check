@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+runs/
+smoke_run/
+*.npz
+.ipynb_checkpoints/

@@ -1,0 +1,22 @@
+[project]
+name = "already-clean-check"
+version = "0.1.0"
+description = "Independent tests of claims in Goodfire's 'Neural Networks Are Already Clean'"
+requires-python = ">=3.10"
+dependencies = [
+  "torch",
+  "torchvision",
+  "torch-lucent==0.1.8",
+  "datasets",
+  "huggingface_hub",
+  "numpy",
+  "pandas",
+  "matplotlib",
+  "pillow",
+]
+
+[project.optional-dependencies]
+modal = ["modal"]
+
+[tool.setuptools]
+packages = ["acc"]
